@@ -30,7 +30,7 @@ def get_suboptions(value: dict) -> List:
     params = []
     for key, value in OrderedDict(sorted(value['suboptions'].items())).items():
         #params.append("  %s: # %s" % (key, value['type']))
-        params.append("  %s:" % key)
+        params.append("%s:" % key)
         if 'suboptions' in value.keys():
             suboptions = get_suboptions(value)
             params += list(map(lambda x: "  %s" % x, suboptions))
@@ -74,8 +74,8 @@ def main():
                 if 'suboptions' in value.keys():
                     suboptions = get_suboptions(value)
                     params += list(map(lambda x: "  %s" % x, suboptions))
-        else:
-            list_of_modules_that_had_problems.append(module)
+        #else:
+        #    list_of_modules_that_had_problems.append(module)
 
         generate_snippet_file(module, params)
 
